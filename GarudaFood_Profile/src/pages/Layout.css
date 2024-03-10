@@ -11,3 +11,15 @@ ion-menu::part(container) {
 
   box-shadow: 4px 0p x 16px rgba(255, 0, 255, 0.18);
 }
+
+/* Light Mode */
+.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #000000;
+  color: #ffffff;
+}

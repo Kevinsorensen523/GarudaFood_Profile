@@ -19,6 +19,8 @@ import {
   IonRow,
   IonGrid,
   IonItem,
+  IonAlert,
+  IonLoading,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { Route, Redirect } from "react-router";
@@ -49,6 +51,8 @@ const Layout: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [theme, setTheme] = useState("light");
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [showLogoutAlert, setShowLogoutAlert] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -56,6 +60,19 @@ const Layout: React.FC = () => {
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
+  };
+
+  const handleLogout = () => {
+    setShowLogoutAlert(true);
+  };
+
+  const handleLogoutConfirmed = () => {
+    setShowLogoutAlert(false);
+    setShowLoading(true);
+    setTimeout(() => {
+      setShowLoading(false);
+      window.location.href = "/news";
+    }, 5000);
   };
 
   return (
@@ -160,11 +177,7 @@ const Layout: React.FC = () => {
               </IonCol>
               <IonCol size="20">
                 <IonMenuToggle auto-hide="false">
-                  <IonButton
-                    routerLink="/keluar"
-                    onClick={toggleMenu}
-                    fill="clear"
-                  >
+                  <IonButton onClick={handleLogout} fill="clear">
                     <IonIcon icon={exitOutline} slot="start" />
                     KELUAR
                   </IonButton>
@@ -184,7 +197,13 @@ const Layout: React.FC = () => {
         <IonContent>
           <IonRouterOutlet id="main-content">
             <Redirect exact path="/" to="/product" />
-            <Route path="/news" component={NewsPage} exact={true} />
+            <Route
+              path="/news"
+              render={(props) => (
+                <NewsPage {...props} isDarkMode={isDarkMode} />
+              )}
+              exact={true}
+            />
             <Route path="/product" component={ProductPage} exact={true} />
             <Route path="/unduhan" component={UnduhanPage} exact={true} />
             <Route path="/store" component={StorePage} exact={true} />
@@ -198,7 +217,11 @@ const Layout: React.FC = () => {
       <IonTabs>
         <IonRouterOutlet>
           <Redirect exact path="/" to="/product" />
-          <Route path="/news" component={NewsPage} exact={true} />
+          <Route
+            path="/news"
+            render={(props) => <NewsPage {...props} isDarkMode={isDarkMode} />}
+            exact={true}
+          />
           <Route path="/product" component={ProductPage} exact={true} />
           <Route path="/unduhan" component={UnduhanPage} exact={true} />
           <Route path="/store" component={StorePage} exact={true} />
@@ -234,6 +257,29 @@ const Layout: React.FC = () => {
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
+      <IonAlert
+        isOpen={showLogoutAlert}
+        onDidDismiss={() => setShowLogoutAlert(false)}
+        header="Confirmation"
+        message="Are you sure you want to log out?"
+        buttons={[
+          {
+            text: "YA",
+            handler: handleLogoutConfirmed,
+          },
+          {
+            text: "TIDAK",
+            handler: () => {
+              console.log("TIDAK clicked");
+            },
+          },
+        ]}
+      />
+      <IonLoading
+        isOpen={showLoading}
+        message={"Tunggu 5 detik untuk kembali ke halaman awal ya Pak..."}
+        duration={5000}
+      />
     </IonReactRouter>
   );
 };

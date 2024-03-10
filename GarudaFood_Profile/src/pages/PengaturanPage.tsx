@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   IonContent,
   IonCol,
@@ -8,9 +8,23 @@ import {
   IonRadio,
   IonRow,
   IonButton,
+  IonAlert,
+  IonLoading,
 } from "@ionic/react";
 
 const PengaturanPage = () => {
+  const [showAlert, setShowAlert] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
+
+  const handleOkayClick = () => {
+    setShowAlert(false);
+    setShowLoading(true);
+
+    setTimeout(() => {
+      setShowLoading(false);
+    }, 2000);
+  };
+
   return (
     <>
       <IonContent>
@@ -52,7 +66,31 @@ const PengaturanPage = () => {
           Data Version: 6816
         </IonTitle>
         <IonRow className="justify-center py-24">
-          <IonButton>CEK DATA BARU</IonButton>
+          <IonButton onClick={() => setShowAlert(true)}>
+            CEK DATA BARU
+          </IonButton>
+          <IonAlert
+            isOpen={showAlert}
+            onDidDismiss={() => setShowAlert(false)}
+            header="Data Base baru terdeteksi. Apakah anda ingin melakukan update ?"
+            buttons={[
+              {
+                text: "OK",
+                handler: handleOkayClick,
+              },
+              {
+                text: "BATAL",
+                handler: () => {
+                  console.log("BATAL clicked");
+                },
+              },
+            ]}
+          ></IonAlert>
+          <IonLoading
+            isOpen={showLoading}
+            message={"Please wait..."}
+            duration={2000}
+          />
         </IonRow>
       </IonContent>
     </>
