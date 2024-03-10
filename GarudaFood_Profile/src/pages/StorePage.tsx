@@ -1,5 +1,6 @@
 import React from "react";
 import { IonContent, IonHeader, IonTitle, IonToolbar } from "@ionic/react";
+import "./../styles.css";
 
 const StorePage = () => (
   <>
