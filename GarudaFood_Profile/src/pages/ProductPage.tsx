@@ -1,50 +1,39 @@
 import React from "react";
-import { IonContent, IonGrid, IonRow, IonCol } from "@ionic/react";
+import {
+  IonContent,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonThumbnail,
+} from "@ionic/react";
 import "./../styles.css";
 
 const ProductPage = () => {
-  const images = [
-    { id: 1, src: "https://ionicframework.com/docs/img/demos/thumbnail.svg" },
-    { id: 2, src: "https://ionicframework.com/docs/img/demos/thumbnail.svg" },
-    { id: 3, src: "https://ionicframework.com/docs/img/demos/thumbnail.svg" },
-    { id: 4, src: "https://ionicframework.com/docs/img/demos/thumbnail.svg" },
-    { id: 5, src: "https://ionicframework.com/docs/img/demos/thumbnail.svg" },
-    { id: 6, src: "https://ionicframework.com/docs/img/demos/thumbnail.svg" },
+  const imageUrls = [
+    "https://ionicframework.com/docs/img/demos/thumbnail.svg",
+    "https://ionicframework.com/docs/img/demos/thumbnail.svg",
+    "https://ionicframework.com/docs/img/demos/thumbnail.svg",
+    "https://ionicframework.com/docs/img/demos/thumbnail.svg",
   ];
 
   return (
     <IonContent>
       <IonGrid className="mt-20">
         <IonRow>
-          {images.slice(0, 2).map((image) => (
-            <IonCol size="6" key={image.id}>
-              <img
-                src={image.src}
-                alt={`Image ${image.id}`}
-                className="w-full h-auto object-cover px-5 py-5"
-              />
-            </IonCol>
-          ))}
-        </IonRow>
-        <IonRow>
-          {images.slice(2, 4).map((image) => (
-            <IonCol size="6" key={image.id}>
-              <img
-                src={image.src}
-                alt={`Image ${image.id}`}
-                className="w-full h-auto object-cover px-5 py-5"
-              />
-            </IonCol>
-          ))}
-        </IonRow>
-        <IonRow>
-          {images.slice(3, 10).map((image) => (
-            <IonCol size="6" key={image.id}>
-              <img
-                src={image.src}
-                alt={`Image ${image.id}`}
-                className="w-full h-auto object-cover px-5 py-5"
-              />
+          {imageUrls.map((imageUrl, index) => (
+            <IonCol size="6" key={index}>
+              <IonCard className="">
+                <IonThumbnail className="mx-auto items-center w-auto h-96 my-4">
+                  <img
+                    src={imageUrl}
+                    alt={`Image ${index + 1}`}
+                    className="w-auto h-96 mx-auto"
+                  />
+                </IonThumbnail>
+              </IonCard>
             </IonCol>
           ))}
         </IonRow>

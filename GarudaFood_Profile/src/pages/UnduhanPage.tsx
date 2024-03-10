@@ -8,6 +8,7 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonThumbnail,
+  IonTitle,
 } from "@ionic/react";
 import "./../styles.css";
 
@@ -22,6 +23,9 @@ const UnduhanPage = () => {
   return (
     <IonContent>
       <IonGrid className="mt-20">
+        <IonRow className="bg-blue-500 py-10">
+          <IonTitle className="text-center text-7xl">DOWNLOADS</IonTitle>
+        </IonRow>
         <IonRow>
           {imageUrls.map((imageUrl, index) => (
             <IonCol size="6" key={index}>

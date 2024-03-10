@@ -39,23 +39,35 @@ import ProductPage from "./ProductPage";
 import UnduhanPage from "./UnduhanPage";
 import StorePage from "./StorePage";
 import ContactPage from "./ContactPage";
+import AkunPage from "./AkunPage";
+import AboutPage from "./AboutPage";
+import PengaturanPage from "./PengaturanPage";
 import "./Layout.css";
 import "./../styles.css";
 
 const Layout: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [theme, setTheme] = useState("light");
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
     <IonReactRouter>
       <IonHeader>
-        <IonToolbar color="tertiary">
-          <IonTitle>GARUDA FOOD</IonTitle>
-          <IonButton onClick={toggleMenu} slot="start" fill="clear">
+        <IonToolbar color="primary">
+          <IonTitle slot="end">GARUDA FOOD</IonTitle>
+          <IonButton onClick={toggleMenu} slot="start" fill="solid">
             <IonMenuButton />
+          </IonButton>
+          <IonButton onClick={toggleTheme} slot="start" fill="solid">
+            {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
           </IonButton>
         </IonToolbar>
       </IonHeader>
@@ -162,7 +174,7 @@ const Layout: React.FC = () => {
           </IonGrid>
         </IonContent>
       </IonMenu>
-      <IonPage>
+      <IonPage className={isDarkMode ? "dark-mode" : "light-mode"}>
         <IonHeader>
           <IonToolbar>
             <IonMenuButton slot="start" />
@@ -177,6 +189,9 @@ const Layout: React.FC = () => {
             <Route path="/unduhan" component={UnduhanPage} exact={true} />
             <Route path="/store" component={StorePage} exact={true} />
             <Route path="/contact" component={ContactPage} exact={true} />
+            <Route path="/akun" component={AkunPage} exact={true} />
+            <Route path="/about" component={AboutPage} exact={true} />
+            <Route path="/pengaturan" component={PengaturanPage} exact={true} />
           </IonRouterOutlet>
         </IonContent>
       </IonPage>
@@ -188,6 +203,9 @@ const Layout: React.FC = () => {
           <Route path="/unduhan" component={UnduhanPage} exact={true} />
           <Route path="/store" component={StorePage} exact={true} />
           <Route path="/contact" component={ContactPage} exact={true} />
+          <Route path="/akun" component={AkunPage} exact={true} />
+          <Route path="/about" component={AboutPage} exact={true} />
+          <Route path="/pengaturan" component={PengaturanPage} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="news" href="/news">

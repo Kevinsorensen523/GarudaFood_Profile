@@ -5,3 +5,28 @@
 .news-ion-item:not(:last-child) {
   border-bottom: 1px solid yellow;
 }
+
+:root {
+  /* Light mode */
+  --ion-background-color-light: #f4f5f8;
+  --ion-text-color-light: #000;
+  /* Dark mode */
+  --ion-background-color-dark: #121212;
+  --ion-text-color-dark: #fff;
+}
+
+.light-mode {
+  background-color: var(--ion-background-color-light);
+  color: var(--ion-text-color-light);
+}
+
+.dark-mode {
+  background-color: var(--ion-background-color-dark);
+  color: var(--ion-text-color-dark);
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

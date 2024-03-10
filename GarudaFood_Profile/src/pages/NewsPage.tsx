@@ -9,6 +9,7 @@ import {
   IonItem,
   IonLabel,
   IonList,
+  IonTitle,
   IonThumbnail,
 } from "@ionic/react";
 import "./../styles.css";
@@ -19,11 +20,9 @@ const NewsItem = ({ date, title, content, imageUrl }) => (
       <img alt="Thumbnail" src={imageUrl} className="w-full h-full" />
     </IonThumbnail>
     <IonLabel>
-      <IonLabel className="py-2">{date}</IonLabel>
-      <IonLabel className="font-bold" color="amber">
-        {title}
-      </IonLabel>
-      <IonLabel className="py-2">{content}</IonLabel>
+      <IonTitle className="py-2">{date}</IonTitle>
+      <IonTitle className="font-bold text-amber-200">{title}</IonTitle>
+      <IonLabel className="py-2 px-6">{content}</IonLabel>
     </IonLabel>
   </IonItem>
 );
