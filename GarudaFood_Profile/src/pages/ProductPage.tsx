@@ -3,7 +3,6 @@ import { IonContent, IonGrid, IonRow, IonCol } from "@ionic/react";
 import "./../styles.css";
 
 const ProductPage = () => {
-  // Sample data array of images
   const images = [
     { id: 1, src: "https://ionicframework.com/docs/img/demos/thumbnail.svg" },
     { id: 2, src: "https://ionicframework.com/docs/img/demos/thumbnail.svg" },
@@ -16,7 +15,6 @@ const ProductPage = () => {
   return (
     <IonContent>
       <IonGrid className="mt-20">
-        {/* Loop through the images array and create a 2x2 grid */}
         <IonRow>
           {images.slice(0, 2).map((image) => (
             <IonCol size="6" key={image.id}>
