@@ -40,7 +40,6 @@ import UnduhanPage from "./UnduhanPage";
 import StorePage from "./StorePage";
 import ContactPage from "./ContactPage";
 import "./Layout.css";
-import "./../styles/global.scss";
 
 const Layout: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);

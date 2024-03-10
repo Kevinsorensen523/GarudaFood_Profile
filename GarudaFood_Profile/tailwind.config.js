@@ -1,6 +1,6 @@
 // tailwind.config.js
 module.exports = {
-  purge: [],
+  purge: ["./src/**/*.tsx"], // Adjust this path according to your project structure
   darkMode: false,
   theme: {
     extend: {},
