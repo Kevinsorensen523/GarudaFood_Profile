@@ -1,0 +1,13 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+ion-menu::part(backdrop) {
+  background-color: rgba(210, 215, 215, 0.5);
+}
+
+ion-menu::part(container) {
+  border-radius: 0 20px 20px 0;
+
+  box-shadow: 4px 0p x 16px rgba(255, 0, 255, 0.18);
+}
