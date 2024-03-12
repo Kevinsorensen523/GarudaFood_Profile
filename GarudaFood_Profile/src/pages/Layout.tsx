@@ -35,6 +35,7 @@ import {
   alertCircle,
   bookOutline,
   exitOutline,
+  chatboxOutline,
 } from "ionicons/icons";
 import NewsPage from "./NewsPage";
 import ProductPage from "./ProductPage";
@@ -46,6 +47,8 @@ import AboutPage from "./AboutPage";
 import PengaturanPage from "./PengaturanPage";
 import "./Layout.css";
 import "./../styles.css";
+import ChatPage from "./ChatPage";
+import DetailChatPage from "./DetailChatPage";
 
 const Layout: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -211,6 +214,8 @@ const Layout: React.FC = () => {
             <Route path="/akun" component={AkunPage} exact={true} />
             <Route path="/about" component={AboutPage} exact={true} />
             <Route path="/pengaturan" component={PengaturanPage} exact={true} />
+            <Route path="/chat" component={ChatPage} exact={true} />
+            <Route path="/DetailChatPage" component={DetailChatPage} />
           </IonRouterOutlet>
         </IonContent>
       </IonPage>
@@ -229,6 +234,8 @@ const Layout: React.FC = () => {
           <Route path="/akun" component={AkunPage} exact={true} />
           <Route path="/about" component={AboutPage} exact={true} />
           <Route path="/pengaturan" component={PengaturanPage} exact={true} />
+          <Route path="/chat" component={ChatPage} exact={true} />
+          <Route path="/DetailChatPage" component={DetailChatPage} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="news" href="/news">
@@ -254,6 +261,10 @@ const Layout: React.FC = () => {
           <IonTabButton tab="contact" href="/contact">
             <IonIcon icon={mailOutline} />
             <IonLabel>HUBUNGI KAMI</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="chat" href="/chat">
+            <IonIcon icon={chatboxOutline} />
+            <IonLabel>CHAT</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
